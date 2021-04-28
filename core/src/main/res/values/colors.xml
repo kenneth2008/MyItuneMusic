@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Main Color System -->
+    <color name="title_main_color">#645C59</color>
+    <color name="title_main_color_50opa">#7F645C59</color>
+    <!--    <color name="title_main_color_40opa">#66645C59</color>-->
+    <color name="title_main_pressed_color">#867E7B</color>
+    <color name="title_sub_color">#777777</color>
+    <color name="title_sub_color_dark">#AAA9A9</color>
+
+    <color name="title_sub_sub_color">#736E5F</color>
+    <color name="textfield_bg_color">#ECF1F4</color>
+
+    <color name="textfield_text_color">#322f2e</color>
+    <!--    <color name="textfield_hints_color_90opa">#E5322f2e</color>-->
+
+    <!--    <color name="textfield_hints_color_80opa">#CC322f2e</color>-->
+    <!--    <color name="textfield_hints_color_70opa">#B3322f2e</color>-->
+    <color name="textfield_hints_color_50opa">#7F322f2e</color>
+    <!--    <color name="textfield_hints_color_40opa">#66322f2e</color>-->
+    <!--    <color name="textfield_hints_color_30opa">#4d322f2e</color>-->
+    <color name="textfield_border_color">#DBE2E4</color>
+
+    <color name="main_color">#f5a623</color>
+    <color name="main_color_dark">#af7c7f</color>
+
+    <color name="activity_background_color">#f3f2ed</color>
+
+
+
+</resources>

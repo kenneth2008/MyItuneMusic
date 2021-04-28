@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Local DataBase name -->
+    <string name="shared_database_name" translatable="false">TownPlaceDB</string>
+
+    <!-- Notification -->
+    <string name="default_notification_channel_id" translatable="false">Main Notification Channel</string>
+    <string name="default_notification_channel_name" translatable="false">Default Channel</string>
+
+    <!-- Google play service -->
+    <string name="the_device_is_not_supported">裝置不支援。</string>
+    <string name="need_google_play_service" formatted="false">%s 不能在缺少 Google Play services 時運行</string>
+    <string name="url_google_service" translatable="false">https://play.google.com/store/apps/details?id=com.google.android.gms</string>
+    <string name="download_now">前往PlayStore</string>
+
+
+    <string name="microsoft_app_center_key" translatable="false">8e37371c-029d-4abc-8391-613775ea1855</string>
+
+
+    <string name="title_mr">先生</string>
+    <string name="title_mrs">女士</string>
+    <string name="title_ms">小姐</string>
+    <string name="mr" formatted="false">%s先生</string>
+    <string name="mrs" formatted="false">%s女士</string>
+    <string name="miss" formatted="false">%s小姐</string>
+
+    <!-- Date format -->
+    <string name="date_time_format" translatable="false" formatted="false">yyyy-MM-dd HH:mm:ss</string>
+    <string name="date_time_without_seconds" translatable="false">yyyy-MM-dd HH:mm</string>
+    <string name="date_time_format_mobile_pass" translatable="false">yyyy-MM-dd HH:mm</string>
+    <string name="date_format">yyyy年M月dd日</string>
+
+    <string name="simple_date_format" translatable="false">yyyy-MM-dd</string>
+    <string name="simple_time_format" translatable="false">HH:mm</string>
+    <string name="simple_time_format_b" translatable="false">H:mm</string>
+    <string name="date_format_with_weekdays" translatable="false">yyyy-MM-d(EEE)</string>
+    <string name="date_format_booking" translatable="false">yyyy-MM-dd</string>
+
+    <!-- Date Picker Dialog -->
+    <string-array name="english_week_string_array">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+
+    <string name="date">日期</string>
+    <string name="time">時間</string>
+    <!-- Date Pick Dialog -->
+    <string name="date_pick_dialog" translatable="false">MMM, yyyy</string>
+    <string name="date_pick_dialog_month" translatable="false">MMM</string>
+
+    <!-- Basic -->
+    <string name="system_reactive_success">系統初始化成功</string>
+    <string name="press_again_to_exit">再按一次退出</string>
+    <string name="ok_with_space">確 定</string>
+    <string name="cancel_with_space">取 消</string>
+    <string name="cancel">取消</string>
+
+    <string name="confirm">確定</string>
+    <string name="verify_with_space">確 認</string>
+    <string name="remove_successful">刪除成功</string>
+    <string name="back">返回</string>
+    <string name="accept">接受</string>
+    <string name="now_loading">讀取中 ...</string>
+    <string name="property_removed_warning">帳號沒有單位, 請重新登記</string>
+    <string name="no_record">沒有資料</string>
+    <string name="no_internet_connection">網絡錯誤</string>
+
+    <string name="disclaimer">免責聲明</string>
+    <string name="private_policy">私隱政策</string>
+
+    <string name="open_with">以應用程式打開</string>
+
+    <string name="loading_error">載入錯誤</string>
+    <string name="retry">重試</string>
+    <string name="done">完成</string>
+    <string name="close">結束</string>
+    <string name="error_not_null">欄位不能空白</string>
+
+    <string name="agree">同 意</string>
+
+    <string name="no_data">暫無資訊</string>
+    <string name="no_data_with_dot">暫無資訊 …</string>
+
+    <string name="unknown">不明</string>
+
+
+    <!-- Before login, language -->
+    <string name="beforelogin_language_select_language">選擇語言</string>
+    <string name="beforelogin_language_chinese_zh" translatable="false">繁體中文</string>
+    <string name="beforelogin_language_chinese_cn" translatable="false">简体中文</string>
+    <string name="beforelogin_language_english" translatable="false">English</string>
+
+    <!-- Facility booking time slot calendar -->
+    <string name="weekdays_sunday">日</string>
+    <string name="weekdays_monday">一</string>
+    <string name="weekdays_tuesday">二</string>
+    <string name="weekdays_wednesday">三</string>
+    <string name="weekdays_thursday">四</string>
+    <string name="weekdays_friday">五</string>
+    <string name="weekdays_saturday">六</string>
+
+    <!-- Facility booking time slot calendar -->
+    <string-array name="custom_weekdays">
+        <item>Su</item>
+        <item>M</item>
+        <item>Tu</item>
+        <item>W</item>
+        <item>Th</item>
+        <item>F</item>
+        <item>Sa</item>
+    </string-array>
+
+    <!-- Update -->
+    <string name="force_update">有新版本可以使用，請立即更新。</string>
+    <string name="suggest_update">有新版本可以使用，立即更新？</string>
+    <string name="update_now">立即更新</string>
+    <string name="update_postpone">稍後</string>
+
+    <!-- Country Code Picker Manager -->
+    <string name="ccp_please_enter_mobile_num">請輸入電話號碼</string>
+    <string name="ccp_incorrect_phone_number_format">請輸入有效的手提電話號碼</string>
+    <string name="ccp_supported_countries" translatable="false">HK,MO,CN</string>
+
+    <!-- Browser -->
+    <string name="previous_page">上一頁</string>
+    <string name="next_page">下一頁</string>
+    <string name="more">更多</string>
+
+    <!-- Is Single Sign On -->
+    <string name="sso_check_cannot_payment">此用戶不能繳交費用</string>
+
+    <!-- social media -->
+    <string name="contact_act_social_not_installed" formatted="false">未安装%s，無法直接開啟。</string>
+    <string name="contact_act_whatsapp">WhatsApp</string>
+    <string name="contact_act_wechat">微信</string>
+
+    <!-- HomeAct Greetings -->
+    <string name="greetings_format" formatted="false" translatable="false">%s, %s!</string>
+    <string name="good_morning">早安</string>
+    <string name="good_afternoon">午安</string>
+    <string name="good_night">晚安</string>
+
+</resources>

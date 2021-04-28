@@ -1,0 +1,143 @@
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        /* 按照MultiDex指南中的"對Android 5.0和更高版本的Multidex支援"說明，即使您 minSdk 21
+           那麼您仍然需要使用 multiDexEnabled true进行編譯 .您不需要做的是包含MultiDex支援庫 */
+        multiDexEnabled true
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        incremental = true  //开启增量编译
+    }
+
+    lintOptions {
+        // aborts the build if an error is found
+        // severity is resolved at execution so once all the rules have been processed
+        abortOnError = true
+        // also check source code from included projects
+        checkDependencies = true
+        // automatically runs lint on release builds. If you run lint from your CI
+        // you can disable it here and save some time
+        checkReleaseBuilds = false
+        // also check the test sources
+        checkTestSources = true
+        // also check the generated sources
+        checkGeneratedSources = true
+    }
+
+    kotlinOptions{
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    kapt {
+        useBuildCache = true
+    }
+
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        maxProcessCount 8
+    }
+
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+
+    flavorDimensions "client", "server"
+
+    productFlavors {
+        music {
+            dimension "client"
+
+
+            buildConfigField 'int', 'VERSION_CODE', "${rootProject.versionCode}"
+            buildConfigField 'String', 'VERSION_NAME', "\"${rootProject.versionName}\""
+
+            resConfigs "en", "zh_HK", "zh-rCN"
+        }
+
+        Uat {
+            dimension "server"
+            buildConfigField "boolean", "IS_UAT", "true"
+
+        }
+
+        Production {
+            dimension "server"
+            buildConfigField "boolean", "IS_UAT", "false"
+            manifestPlaceholders = [crashlyticsEnabled: true]
+        }
+
+        Developer {
+            dimension "server"
+            buildConfigField "boolean", "IS_UAT", "true"
+            manifestPlaceholders = [crashlyticsEnabled: false]
+        }
+    }
+
+//    splits {
+//        density {
+//            enable gradle.startParameter.taskNames.any {
+//                it.contains("Debug") && it.contains("Developer")
+//            }
+//            reset()
+//            include "xhdpi"
+//        }
+//
+//    }
+
+    buildTypes {
+        release {
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'consumer-rules.pro'
+
+            /* shrinkResources cannot be used for library */
+            shrinkResources false
+
+            splits.abi.enable = false
+            splits.density.enable = false
+        }
+        debug {
+            debuggable true
+            splits.abi.enable = false
+
+//            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+            crunchPngs false
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'consumer-rules.pro'
+
+            /* shrinkResources cannot be used for library */
+            shrinkResources false
+
+            signingConfig null
+        }
+    }
+}

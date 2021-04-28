@@ -1,0 +1,137 @@
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        multiDexEnabled true
+
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        incremental = true  //开启增量编译
+    }
+
+
+    lintOptions {
+        // aborts the build if an error is found
+        // severity is resolved at execution so once all the rules have been processed
+        abortOnError = true
+        // also check source code from included projects
+        checkDependencies = true
+        // automatically runs lint on release builds. If you run lint from your CI
+        // you can disable it here and save some time
+        checkReleaseBuilds = false
+        // also check the test sources
+        checkTestSources = true
+        // also check the generated sources
+        checkGeneratedSources = true
+    }
+
+    kotlinOptions{
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    kapt {
+        useBuildCache = true
+    }
+
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        threadCount 4
+        maxProcessCount 4
+        javaMaxHeapSize "4g"
+    }
+
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+
+    signingConfigs {
+        def propsFile = file('../signing.properties')
+
+        if (propsFile.exists() && propsFile.canRead()) {
+            def props = new Properties()
+            props.load(new FileInputStream(propsFile))
+            if (props != null) {
+                whizbizConfig {
+                    storeFile = file(props['config'])
+                    storePassword = props['config.storePassword']
+                    keyAlias = props['config.keyAlias']
+                    keyPassword = props['config.keyPassword']
+                }
+            }
+        }
+    }
+
+
+    flavorDimensions "client", "server"
+
+
+    productFlavors{
+
+        music {
+            dimension "client"
+            applicationId = "com.keysoc.music"
+            versionCode rootProject.versionCode
+            versionName rootProject.versionName
+
+            signingConfig signingConfigs.whizbizConfig
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resConfigs "en", "zh_HK", "zh-rCN"
+        }
+
+        Uat {
+            dimension "server"
+            applicationIdSuffix ".uat"
+            buildConfigField "boolean", "IS_UAT", "true"
+        }
+
+        Production {
+            dimension "server"
+            buildConfigField "boolean", "IS_UAT", "false"
+        }
+
+        Developer {
+            dimension "server"
+            applicationIdSuffix ".uat"
+            buildConfigField "boolean", "IS_UAT", "true"
+            manifestPlaceholders = [crashlyticsEnabled: false]
+        }
+    }
+}

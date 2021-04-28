@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/action_bar_margin_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="18dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/action_bar_button_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/ll_actionbar_left"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="5.5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_back_white" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/txtActionBarTitle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Title"
+                android:textColor="#8DCFE0"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ll_actionbar_right"
+                app:layout_constraintStart_toEndOf="@+id/ll_actionbar_left"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ll_actionbar_right"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical|start"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/btnActionBarRight"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:padding="7.5dp"
+                    android:scaleType="fitCenter"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--	<TextView-->
+    <!--		android:id="@+id/txtActionBarTitle"-->
+    <!--		android:layout_width="match_parent"-->
+    <!--		android:layout_height="wrap_content"-->
+    <!--		android:layout_gravity="center_vertical"-->
+    <!--		android:layout_marginStart="@dimen/margin_largeX"-->
+    <!--		android:layout_marginEnd="@dimen/margin_largeX"-->
+    <!--		android:ellipsize="end"-->
+    <!--		android:gravity="start"-->
+    <!--		android:maxLines="1"-->
+    <!--		android:textColor="@color/textfield_text_color"-->
+    <!--		android:textSize="24sp"-->
+    <!--        android:lineSpacingExtra="6sp"-->
+    <!--		app:layout_constraintTop_toBottomOf="@+id/action_bar_margin_container" />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

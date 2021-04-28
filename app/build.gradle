@@ -1,0 +1,107 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: '../build_flavors.gradle'
+
+android {
+
+
+    SimpleDateFormat format = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ssSSSSS")
+    Calendar calendar = Calendar.getInstance()
+    String strDate = format.format(calendar.time)
+    String versionName = versionName.replace('.', '_')
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = ("${variant.productFlavors[0].name}_${variant.productFlavors[1].name}_${variant.versionCode}_${versionName}_${strDate}.apk")
+        }
+    }
+
+
+    buildTypes {
+        release {
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            shrinkResources false
+            manifestPlaceholders = [crashlyticsEnabled: true]
+            splits.abi.enable = false
+            splits.density.enable = false
+
+        }
+
+        debug {
+            debuggable true
+
+            ext.alwaysUpdateBuildId = false
+            crunchPngs false
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            shrinkResources false
+
+            signingConfig null
+
+
+            manifestPlaceholders = [crashlyticsEnabled: true]
+//            ext.enableCrashlytics = false
+        }
+    }
+}
+
+dependencies {
+
+    implementation project(":core")
+    implementation project(":datamodel")
+
+    /* Kotlin */
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    /* Android X */
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation 'androidx.work:work-runtime:2.4.0'
+
+    // Constraint layout
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+    implementation "com.google.android.material:material:$google_material"
+
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
+    // Network request
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    implementation "io.reactivex.rxjava3:rxkotlin:3.0.1"
+
+    /* Database */
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // coreLibrary De sugaring
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
+    /**** Layout Related ****/
+
+    // ImageProcessing
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    // Glide transformation
+    implementation 'jp.wasabeef:glide-transformations:4.0.1'
+
+    // Pull to Refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+}

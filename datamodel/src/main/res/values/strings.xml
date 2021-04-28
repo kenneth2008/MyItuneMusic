@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Local DataBase name -->
+    <string name="shared_database_name" translatable="false">TownPlaceDB</string>
+
+</resources>
