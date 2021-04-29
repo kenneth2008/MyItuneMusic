@@ -70,7 +70,7 @@ android {
     flavorDimensions "client", "server"
 
     productFlavors {
-        music {
+        MyItuneMusic {
             dimension "client"
 
 

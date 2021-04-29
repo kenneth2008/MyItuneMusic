@@ -104,9 +104,9 @@ android {
 
     productFlavors{
 
-        music {
+        MyItuneMusic {
             dimension "client"
-            applicationId = "com.keysoc.music"
+            applicationId = "com.myitunes.music"
             versionCode rootProject.versionCode
             versionName rootProject.versionName
 
