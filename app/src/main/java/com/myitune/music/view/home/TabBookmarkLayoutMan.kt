@@ -132,21 +132,11 @@ class TabBookmarkLayoutMan(
     private val mSwipeMenuCreator =
         SwipeMenuCreator { swipeLeftMenu, swipeRightMenu, position ->
 
-            val data = albumBookmarkAdapter.getItem(position)
-            val bookMarkRecord = db.getAlbumBookmarkDao().getDataById(data.collectionId)
-
             val width: Int = act.resources.getDimensionPixelSize(R.dimen.dp_70)
 
             // 1. MATCH_PARENT 自适应高度，保持和Item一样高;
             // 2. 指定具体的高，比如80;
             // 3. WRAP_CONTENT，自身高度，不推荐;
-
-//            val addItem: SwipeMenuItem =
-//                SwipeMenuItem(act).setBackground(R.drawable.selector_green)
-//                    .setImage(R.drawable.ic_action_add)
-//                    .setWidth(width)
-//                    .setHeight(height)
-//            swipeLeftMenu.addMenuItem(addItem) // 添加菜单到左侧。
 
 
             val closeItem: SwipeMenuItem =

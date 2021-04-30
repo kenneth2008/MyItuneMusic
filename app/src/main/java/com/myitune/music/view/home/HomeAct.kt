@@ -58,8 +58,12 @@ class HomeAct : BaseActivity<ActivityHomeBasicBinding>() {
 
         startLoading()
 
+        val strKeyWords = "jack+johnson"
+        val strEntity = "album"
+
         GetSearchRequest(
             this,
+            strKeyWords, strEntity,
             object : SimpleRequestListener<SearchRespond> {
                 override fun onError(response: SearchRespond?) {
                     stopLoadingAction()
@@ -70,7 +74,7 @@ class HomeAct : BaseActivity<ActivityHomeBasicBinding>() {
                     stopLoadingAction()
 
                     /* change to listen pattern */
-                        updateDataIntoUI()
+                    updateDataIntoUI()
                 }
             }
         ).execute()

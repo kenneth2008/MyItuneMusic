@@ -11,6 +11,8 @@ import retrofit2.Response
 class GetSearchRequest(
 
     private val act: BaseActivity<*>,
+    private val strKeyWords: String,
+    private val strEntity: String,
     private val listener: SimpleRequestListener<SearchRespond>,
 
     ) : BaseNetWorkRequest() {
@@ -18,14 +20,9 @@ class GetSearchRequest(
 
     fun execute() {
 
-//        val params = HashMap<String, Any>()
-
-//        params["term"] = "jack+johnson"
-//        params["entity"] = "album"
-
 
         api.getSearchRequest(
-            "jack+johnson", "album"
+            strKeyWords, strEntity
         ).enqueue(object : retrofit2.Callback<SearchRespond?> {
 
             override fun onFailure(
@@ -44,7 +41,7 @@ class GetSearchRequest(
 
                     val dao = AppDatabase.getDatabase(act.myApp).getAlbumDataDao()
 
-                    dao.deleteAndInsertAll(jsonResponse?.results?:ArrayList())
+                    dao.deleteAndInsertAll(jsonResponse?.results ?: ArrayList())
 
                     listener.onSuccess(jsonResponse)
                 } else {
