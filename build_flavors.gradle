@@ -10,6 +10,8 @@ android {
 
         multiDexEnabled true
 
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildFeatures {
@@ -106,7 +108,7 @@ android {
 
         MyItuneMusic {
             dimension "client"
-            applicationId = "com.myitunes.music"
+            applicationId = "com.myitune.music"
             versionCode rootProject.versionCode
             versionName rootProject.versionName
 

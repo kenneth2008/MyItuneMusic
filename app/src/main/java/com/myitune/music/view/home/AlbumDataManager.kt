@@ -10,7 +10,7 @@ class AlbumDataManager(
     private val act: BaseActivity<*>
 ) : MyAppSubject<AlbumBookmark>() {
 
-    private var dataList: MutableList<AlbumBookmark> =
+     var dataList: MutableList<AlbumBookmark> =
         AppDatabase.getDatabase(act.myApp).getAlbumBookmarkDao().getAll()
 
     fun add(data: AlbumBookmark) {

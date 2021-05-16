@@ -13,7 +13,7 @@ class HomeAct : BaseActivity<ActivityHomeBasicBinding>() {
 
     private val TAG = "HomeAct"
 
-    private lateinit var albumDataManager: AlbumDataManager
+     lateinit var albumDataManager: AlbumDataManager
 
     private var tabSearchLayoutMan: TabSearchLayoutMan? = null
     private var tabBookmarkLayoutMan: TabBookmarkLayoutMan? = null
@@ -43,12 +43,14 @@ class HomeAct : BaseActivity<ActivityHomeBasicBinding>() {
         // Tab Button setup
         viewBinding.btnTabSearch.setOnClickListener {
             Log.i(TAG, "Clicked1")
+            getITunesData()
             tabBookmarkLayoutMan?.hide()
             tabSearchLayoutMan?.show()
         }
 
         viewBinding.btnTabBookMark.setOnClickListener {
             Log.i(TAG, "Clicked2")
+            getITunesData()
             tabBookmarkLayoutMan?.show()
             tabSearchLayoutMan?.hide()
         }
@@ -91,9 +93,9 @@ class HomeAct : BaseActivity<ActivityHomeBasicBinding>() {
 
     override fun onResume() {
         super.onResume()
-
         tabSearchLayoutMan?.onResume()
         tabBookmarkLayoutMan?.onResume()
+
     }
 
     override fun onPause() {
